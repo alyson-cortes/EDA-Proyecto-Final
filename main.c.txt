@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+ //Declaracion de estructuras 
+
+ //Nodo para paquetes 
+ typedef struct nodoc{
+    int id; 
+    float peso;
+    char nombre[50];
+    struct nodoc *next; 
+    struct nodoc *prev; 
+ }nodoc;
+
+ typedef struct nodocar
+ {
+    int ide; 
+    int pesoM; 
+    struct nodocar *next;
+    struct nodocar *prev;
+    nodoc *Carga; 
+ }nodocar;
+
+
+ //Variables globales 
+    int contPac=1; 
+    int contAr=0; 
+
+ //Listas 
+nodoc *listPacEn=NULL;
+nodoc *HeadC=NULL; 
+nodoc *TailC=NULL;
+
+#include "menu.c"
+
+int main(void)
+{
+   menu(); 
+   return 0; 
+}

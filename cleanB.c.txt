@@ -1,0 +1,7 @@
+void cleanB()
+{
+    //Declaracion de variables 
+    int a; 
+    //Algoritmo
+    while((a=getchar())!='\n'&& a != EOF);    
+}

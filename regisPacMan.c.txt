@@ -1,0 +1,45 @@
+//Registro de paqueteres manualmente
+int regisPacMan()
+{
+    //Declaracion de variables 
+    
+    //Algoritmo
+    nodoc *nuevo=(nodoc*)malloc(sizeof(nodoc)); 
+    if(nuevo==NULL)
+    {
+        puts("ERROR 1. Error en memoría dinámica");
+        return 1; 
+    }
+    getchar();
+    puts("Nombre del paquete: "); 
+    fgets(nuevo->nombre, 50, stdin);
+    nuevo->nombre[strcspn(nuevo->nombre, "\n")] = '\0';
+    printf("Ingresa el peso:   ");
+   if(scanf(" %f", &nuevo->peso)==1){
+        puts("");       
+        //Guardado el paquete en una cola. 
+        if(HeadC==NULL && TailC==NULL)
+        {
+            nuevo->next=NULL;
+            nuevo->prev=NULL;
+            HeadC=nuevo;
+            TailC=nuevo; 
+        }else
+        {
+            nuevo->prev=TailC; 
+            TailC->next=nuevo; 
+            nuevo->next=NULL;
+            TailC=nuevo;
+        }
+        puts("Datos guardados correctamente"); 
+        nuevo->id=contPac; 
+        contPac++; 
+        VisualizarColaPac();
+        return 0; 
+    }
+    else
+    {
+        clean();
+        return 1; 
+    }
+}

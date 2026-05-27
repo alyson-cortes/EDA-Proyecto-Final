@@ -1,0 +1,69 @@
+int regisPacAr()
+{
+    //Declaracion de variables 
+    int i, option; 
+
+    //Algoritmo
+    FILE *archivo=fopen("paquetes.csv", "r");
+    if(archivo==NULL)
+    {
+        puts("ERROR 2. No se ha encontrado el archivo");
+        return 1; 
+    }
+    for(i=0; i<contAr; i++)
+    {
+        fscanf(archivo, "%*[^\n]\n");
+    }
+    puts("----Cuantos elementos deseas descargar-----"); 
+    puts("Escoge un numero del uno al cinco");
+    if(scanf("%d", &option)==1)
+    { 
+        if (option<1||option>5)
+        {
+            puts("Intervalo no valido");
+            return 1; 
+        }
+        if(option+contAr>5)
+        {
+            puts("No hay elementos suficientes"); 
+            return 1; 
+        }
+        for(i=0; i<option; i++)
+        {
+            nodoc *Nuevo=(nodoc*)malloc(sizeof(nodoc));
+            if(Nuevo==NULL)
+            {
+            puts("ERROR 1. Error en memoría dinámica");
+            return 1; 
+            }
+            fscanf(archivo, "%f,%49[^\n]\n ", &Nuevo->peso, Nuevo->nombre);
+            //Guardado de cada paquete en una cola. 
+            if(HeadC==NULL && TailC==NULL)
+            {
+                Nuevo->next=NULL;
+                Nuevo->prev=NULL;
+                HeadC=Nuevo;
+                TailC=Nuevo; 
+            }else
+            {
+                Nuevo->prev=TailC; 
+                TailC->next=Nuevo; 
+                Nuevo->next=NULL;
+                TailC=Nuevo; 
+            }
+            
+            Nuevo->id=contPac; 
+            contAr ++;
+            contPac++; 
+            
+        }
+        puts("Datos guardados correctamente"); 
+        VisualizarColaPac();
+        fclose(archivo);
+    }
+    else 
+    {
+        clean(); 
+        return 1; 
+    }
+}
