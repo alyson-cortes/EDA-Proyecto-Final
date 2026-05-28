@@ -15,7 +15,6 @@ typedef struct NodoCamion {
 void insertarCamion(NodoCamion** cabeza, Camion nuevoCamion);
 void rotarCoches(NodoCamion** cabeza);
 
-// Usamos void* para que el compilador no pida las definiciones exactas aquí
 void asignarPaqueteACoche(void* cola, NodoCamion** camionActual, void* topePila);
 
 #endif // CAMIONES_H

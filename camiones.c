@@ -34,7 +34,7 @@ void rotarCoches(NodoCamion** cabeza) {
     }
 }
 
-// 3. FUNCIÓN: Asignar paquetes (Ajustada con firmas genéricas para evitar bloqueos)
+// 3. FUNCIÓN: Asignar paquetes 
 void asignarPaqueteACoche(void* cola, NodoCamion** camionActual, void* topePila) {
     if (cola == NULL) {
         printf("Alerta: Estructura de cola no inicializada.\n");
